@@ -22,7 +22,7 @@ ui_print() {
 
 # abort ["<text>" [...]]
 abort() {
-  ui_print " " "$@";
+  ui_print " " "$*";
   exit 1;
 }
 
@@ -678,9 +678,7 @@ setup_ak() {
             else
               abort "Unable to determine mtd $block partition. Aborting...";
             fi;
-            if [ -e /dev/mtd/$mtdname ]; then
-              target=/dev/mtd/$mtdname;
-            fi;
+            target=/dev/mtd/$mtdname;
           elif [ -e /dev/block/by-name/$part ]; then
             target=/dev/block/by-name/$part;
           elif [ -e /dev/block/bootdevice/by-name/$part ]; then
@@ -692,7 +690,7 @@ setup_ak() {
           elif [ -e /dev/$part ]; then
             target=/dev/$part;
           fi;
-          test "$target" && break 2;
+          test -e "$target" && break 2;
         done;
       done;
       if [ "$target" ]; then
