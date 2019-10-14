@@ -9,8 +9,8 @@ do.devicecheck=1
 do.modules=0
 do.cleanup=1
 do.cleanuponabort=0
-device.name1=redmi4a
-device.name2=rolex
+device.name1=redmi5a
+device.name2=riva
 supported.versions=8.1 - 10.0
 '; } # end properties
 
